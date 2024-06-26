@@ -1,0 +1,572 @@
+    <!DOCTYPE html>
+     <html lang="en">
+        <head>
+            <style>
+               .video-container 
+                {
+                display: flex;
+                }
+
+                .video 
+                {
+                flex: 1;
+                margin-right: 10px;
+                }
+
+                .video:last-child 
+                 {
+                margin-right: 0;
+                }
+                .solieu
+                {
+                color:brown;
+                font-size: 30px;
+                font-weight: bold;
+                }
+                .nd{
+                 color:brown;
+                font-style: italic;
+                font-size: 25px;
+                }
+
+                .rating 
+                {
+                unicode-bidi: bidi-override;
+                direction: rtl;
+                text-align: left;
+                }
+
+                .rating > input 
+                {
+               display: none;
+                }
+
+               .rating > label 
+               {
+               display: inline-block;
+               width: 1.1em;
+               font-size: 2em;
+               color: #ccc;
+               cursor: pointer;
+               }
+
+              .rating > label:hover,
+              .rating > input:checked ~ label 
+              {
+               color: #f7d800;
+              }
+              .rating > label:hover:before,
+              .rating > input:checked ~ label:before,
+              .rating > label:hover ~ label:before,
+              .rating > input:checked ~ label:before 
+              {
+              content: "\2605";
+              position: absolute;
+              }
+
+             .rating > input:checked ~ label:before
+              {
+              color: #f7d800;
+              }
+             .rating
+             {
+            text-align:center
+             } 
+
+            /* Đặt toàn bộ phần tử ul về 0 margin và padding */
+ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+/* Tạo kiểu cho thanh điều hướng */
+nav {
+    background-color: #333;
+}
+
+/* Tạo kiểu cho danh sách điều hướng */
+.nav-list {
+    display: flex;
+    justify-content: space-around;
+}
+
+/* Tạo kiểu cho từng mục điều hướng */
+.nav-item {
+    position: relative; /* Cần thiết cho dropdown */
+    padding: 14px 20px;
+}
+
+/* Tạo kiểu cho các liên kết */
+.nav-item a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+
+
+/* Tạo kiểu cho dropdown */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #333;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+/* Tạo kiểu cho các liên kết trong dropdown */
+.dropdown-content a {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+
+/* Hiển thị dropdown khi hover vào mục cha */
+.nav-item:hover .dropdown-content {
+    display: block;
+
+}
+
+.thu-nho-anh {
+    width: 300px; /* Đặt kích thước nhỏ cho logo */
+    height: 300px; /* Đặt kích thước nhỏ cho logo */
+    border-radius: 50%; /* Làm tròn ảnh */
+}
+.solieu {
+    border: 2px solid #4CAF50; /* Viền màu xanh lá */
+    padding: 20px; /* Khoảng cách bên trong khung */
+    background-color: #f9f9f9; /* Màu nền nhạt */
+    border-radius: 10px; /* Bo tròn góc */
+    text-align: center; /* Căn giữa văn bản */
+    font-size: 2.5em; /* Tăng kích thước chữ */
+    margin: 50px auto; /* Khoảng cách bên ngoài khung */
+    width: 100%; /* Độ rộng của khung */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Đổ bóng nhẹ */
+}
+@media (max-width: 768px){
+    .container{
+        flex-direction: column;
+    }
+}
+
+             </style>
+                    <meta charset="utf-8" />
+                    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+                    <meta name="description" content="" />
+                    <meta name="author" content="" />
+                    <title>Literature</title>
+                    <!-- Biểu tượng trang web -->
+                    <link rel="icon" type="image/x-icon" href="assets/hW1.jpg"/>
+                    <!-- Biểu tượng Bootstrap -->
+                    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" type="text/css" />
+                     <!-- Font của Google -->
+                     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css" />
+                    <!-- CSS chính của theme (bao gồm Bootstrap) -->
+                     <link href="css/styles.css" rel="stylesheet" />
+        </head>
+                    <body>
+                     <!-- Thanh điều hướng -->
+                    <nav class="navbar navbar-light bg-light static-top">
+                        <div class="container">
+                            <a class="navbar-brand" href="#!"><marquee>Thuật Thuật xin chào!</marquee></a>
+                            <a class="btn btn-primary" href="#signup">Đánh giá</a>
+                        </div>
+                    </nav>
+                    <!-- Tiêu đề chính -->
+                    <header class="masthead">
+                        <div class="container position-relative">
+                            <div class="row justify-content-center">
+                                <div class="col-xl-6">
+                                    <div class="text-center text-white">
+                                        <!-- Tiêu đề trang -->
+                                        <div class="d-flex flex-column">
+                                            <div class="d-flex justify-content-center"><img src="assets/img/bg-h100.jpeg" class="thu-nho-anh"></div>
+                                        <h1 class="mb-5">Website giới thiệu về các tác phẩm Văn học Việt Nam</h1>
+                                        <!-- Form đăng ký -->
+                                        <form class="form-subscribe" id="contactForm" data-sb-form-api-token="API_TOKEN">
+                                        <!-- Ô nhập địa chỉ email -->
+                                             <div class="row">
+                                                 <div class="col">
+                                                    <input class="form-control form-control-lg" id="emailAddress" type="email" placeholder="Địa chỉ Email" data-sb-validations="required,email" />
+                                                    <div class="invalid-feedback text-white" data-sb-feedback="emailAddress:required">Địa chỉ Email là bắt buộc.</div>
+                                                    <div class="invalid-feedback text-white" data-sb-feedback="emailAddress:email">Địa chỉ Email không hợp lệ.</div>
+                                                 </div>
+                                                 <div class="col-auto"><button class="btn btn-primary btn-lg disabled" id="submitButton" type="submit">Gửi</button></div>
+                                            </div>
+                                                <!-- Thông báo thành công -->
+                                                <div class="d-none" id="submitSuccessMessage">
+                                                <div class="text-center mb-3">
+                                                <div class="fw-bolder">Chúc mừng bạn đã đăng nhập thành công hihi!</div>    
+                                                </div>
+                                                </div>
+                                                <!-- Thông báo lỗi -->
+                                                <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Vui lòng đăng nhập lại!</div></div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </header>
+                        <nav>
+                            <ul class="nav-list">
+                                <li class="nav-item dropdown">
+                                    <a href="index.html" class="dropbtn">Trang Chủ</a>
+
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a href="vdu.html" class="dropbtn" target="_blank">Quản lý người dùng</a>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a href="#services" class="dropbtn">Một số bài hát về Văn học</a>
+                                    <ul class="dropdown-content">
+                                        <li><a href="https://www.youtube.com/results?search_query=b%C3%B3ng+ph%C3%B9+hoa" target="_blank">Bóng Phù Hoa</a></li>
+                                        <li><a href="https://www.youtube.com/watch?v=H_K9O75WtGo" target="_blank">Những Ngôi Sao Xa Xôi</a></li>
+                                        
+                                    </ul>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a href="#contact" class="dropbtn">Chủ đề sách "Chữa lành tâm hồn"</a>
+                                    <ul class="dropdown-content">
+                                        <li><a href="https://thuvienhoasen.org/images/file/y5sBQGYE1QgQAHou/hieu-ve-trai-tim.pdf" target="_blank">"Hiểu về trái tim"</a></li>
+                                        <li><a href="https://thuvienhoasen.org/images/file/axcSv51G0QgQAPx4/khong-diet-khong-sinh-dung-so-hai.pdf" target="_blank">"Không diệt không sinh đừng sợ hãi"</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </nav>
+                        <!-- Biểu tượng Grid -->
+                        <section class="features-icons bg-light text-center">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                        <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+                                            <div class="features-icons-icon d-flex"><i class="bi bi-flower1 m-auto text-primary"></i></div>
+                                            <h3><a href="https://vi.wikipedia.org/wiki/V%C4%83n_h%E1%BB%8Dc_Vi%E1%BB%87t_Nam#:~:text=V%C4%83n%20h%E1%BB%8Dc%20Vi%E1%BB%87t%20Nam%20l%C3%A0,qu%E1%BB%91c%20t%E1%BB%8Bch%20v%C3%A0%20th%E1%BB%9Di%20%C4%91%E1%BA%A1i. "target="_blank">Khái niệm về "Văn học Việt Nam"</a></h3>
+                                            <p class="lead mb-0"><em>Văn học Việt Nam là khoa học nghiên cứu, phê bình và sáng tác ngữ văn của người Việt Nam, không kể quốc tịch và thời đạ</em></p>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+                                            <div class="features-icons-icon d-flex"><i class="bi bi-heart m-auto text-primary"></i></div>
+                                            <h3>Một số Tác phẩm văn học Việt Nam</h3>
+                                            <p class="lead mb-0">
+                                                <em><strong>"Anh chính là thanh xuân của em"</strong></em> - Hạ Vũ<br>
+                                                <em><strong> "Tôi thấy hoa vàng trên cỏ xanh"</strong></em> - Nguyễn Nhật Ánh<br>
+                                                <em><strong>  "Số đỏ"</strong></em> - Vũ Trọng Phụng<br>
+                                                <em><strong>  Cánh đồng bất tận"</strong></em> - Nguyễn Ngọc Tư<br>
+                                                <em><strong> "Đất rừng phương Nam"</strong></em> - Đoàn Giỏi<br>
+                                                <em><strong>  "Chiếc thuyền ngoài xa"</strong></em> - Nguyễn Minh Châu<br>
+                                                <em><strong>  "Sài Gòn - Hà Nội"</strong></em> - Dương Thu Hương<br>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="features-icons-item mx-auto mb-0 mb-lg-3">
+                                            <div class="features-icons-icon d-flex"><i class="bi bi-snow2 m-auto text-primary"></i></div>
+                                            <h3>Đọc sách giúp chúng ta như thế nào?</h3>
+                                            <p class="lead mb-0">Mỗi ngày các bạn giành ra 30 phút để đọc một mẫu truyện, điều này giúp chúng ta thư giản, giải toả căn thẳng sau những ngày mệt mỏi. Ngoài ra nó còn cải thiện vốn từ ngữ Tiếng việt giúp các bạn viết ra được những bài văn hay, sáng tạo hơn v.v.v.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                            <!-- Trình diễn hình ảnh -->
+                    <section class="showcase">
+                        <div class="container-fluid p-0">
+                            <div class="row g-0">
+                                <div class="col-lg-6 order-lg-2 text-white showcase-img" style="background-image: url('assets/img/bg-showcase-1.jpeg')"></div>
+                                <div class="col-lg-6 order-lg-1 my-auto showcase-text">
+                                    <h2>Tác phẩm: "Tôi thấy hoa vàng trên cỏ xanh"<br><br>
+                                        Tác giả: Nguyễn Nhật Ánh
+                                    </h2>
+                                    <br>
+                                    <p class="lead mb-0">
+                                        <h3>Tóm tắt:</h3>
+                                        Câu chuyện xoay quanh cuộc sống của ba nhân vật chính Mùi, Lá và Ngọc tại làng Đoá. Mùi là một cậu bé nhút nhát, thường bị bạn bè trêu chọc. Lá là người anh trai luôn bảo vệ em trai mình. Ngọc là cô bé mới chuyển đến làng Đoá và nhanh chóng trở thành bạn thân của Mùi.
+
+                                        Mùi và Ngọc thường cùng nhau chơi đùa trên cánh đồng cỏ xanh, nơi có những bông hoa vàng rực rỡ. Hai người bạn này đã có rất nhiều kỷ niệm đẹp bên nhau. Tuy nhiên, tình bạn của họ bắt đầu rạn nứt khi Lá và Ngọc bắt đầu nảy sinh tình cảm với nhau.
+                                        
+                                        Mùi cảm thấy ghen tị với Ngọc và cố gắng giành lại tình cảm của anh trai. Tuy nhiên, Lá lại chọn Ngọc và Mùi buộc phải chấp nhận điều đó.
+                                        
+                                        Cuối cùng, Mùi nhận ra rằng mình đã hiểu sai về Lá và Ngọc. Cậu bé quyết định tha thứ cho hai người bạn của mình và bắt đầu học cách sống độc lập hơn.
+                                        </p>
+                                </div>
+                            </div>
+                            <div class="row g-0">
+                                <div class="col-lg-6 text-white showcase-img" style="background-image: url('assets/img/bg-h2.webp')"></div>
+                                <div class="col-lg-6 my-auto showcase-text">
+                                    <h2>Tác phẩm: "Anh chính là thanh xuân của em"<br><br>
+                                        Tác giả: Hạ Vũ
+                                    </h2>
+                                    <br>
+                                    <p class="lead mb-0">
+                                        <h3>Tóm tắt:</h3>
+                                        "Anh chính là thanh xuân của em" là tập tản văn gồm 2 phần của tác giả Hạ Vũ, được xuất bản lần đầu vào năm 2014. Tập sách là những mảnh ghép ký ức về những rung động đầu đời, những mối tình dang dở và những nuối tiếc về thanh xuân đã qua của tác giả.
+
+                                        Phần 1:
+                                        
+                                        Gồm những câu chuyện ngắn kể về những rung động đầu đời của Hạ Vũ, những mối tình học trò trong sáng, hồn nhiên.
+                                        Nổi bật trong phần này là những câu chuyện về "anh", người con trai đã mang đến cho Hạ Vũ những cảm xúc đầu đời, những rung động đầu đời.
+                                        Phần 2:
+                                        
+                                        Gồm những câu chuyện về những mối tình dang dở, những nuối tiếc về thanh xuân đã qua.
+                                        Hạ Vũ nhìn lại những mối tình đã qua với những cảm xúc bồi hồi, xen lẫn tiếc nuối và day dứt.
+                                        Tác giả cũng chia sẻ những suy ngẫm về thanh xuân, về những điều đã qua và những điều đang đến.
+                                     </p>
+                                </div>
+                            </div>
+                            <div class="row g-0">
+                                <div class="col-lg-6 order-lg-2 text-white showcase-img" style="background-image: url('assets/img/bg-h3.jpg')"></div>
+                                <div class="col-lg-6 order-lg-1 my-auto showcase-text">
+                                    <h2>Tác phẩm: "Số đỏ"<br><br>
+                                        Tác giả: Vũ Trọng Phụng
+                                    </h2>
+                                    <br>
+                                    <p class="lead mb-0">
+                                        <h3>Tóm tắt:</h3>
+                                        Xuân Tóc Đỏ, một gã trai lêu lỏng, bất học vô nghề, tình cờ được cụ Tý, một nhà giàu mới nổi, nhận làm thư ký. Nhờ sự ma mãnh, lươn lẹo và may mắn, Xuân Tóc Đỏ liên tục thăng tiến trong xã hội. Hắn trở thành diễn viên quảng cáo, được phong danh hiệu "Nghệ sĩ Mẫu mực", "Kỳ nhân số đỏ".
+
+                                        Sự thành công của Xuân Tóc Đỏ là sự châm biếm sâu cay cho xã hội thực dân nửa phong kiến lúc bấy giờ, nơi đồng tiền và những giá trị đạo đức giả đang chi phối mọi thứ.
+                                        
+                                        Ý nghĩa:
+                                        
+                                        Tiểu thuyết "Số đỏ" là một bức tranh châm biếm sắc nét về xã hội Việt Nam trước Cách mạng tháng Tám, phơi bày những thói hư tật xấu, sự giả dối, lố lăng của tầng lớp thống trị và những kẻ cơ hội.
+                                        Tác phẩm thể hiện niềm tin vào con người lao động, vào tương lai tươi sáng của dân tộc.
+                                        Ngoài ra:
+                                        
+                                        Tiểu thuyết "Số đỏ" được đánh giá là một trong những tác phẩm hiện thực xuất sắc nhất của văn học Việt Nam.
+                                        Tác phẩm đã được dịch ra nhiều thứ tiếng và được chuyển thể thành phim, kịch nhiều lần.
+                                        </p>
+                                </div> 
+                            </div>
+                            <div class="row g-0">
+                                <div class="col-lg-6 text-white showcase-img" style="background-image: url('assets/img/bg-h4.jpg')"></div>
+                                <div class="col-lg-6 my-auto showcase-text">
+                                    <h2>Tác phẩm: "Cánh đồng bất tận"<br><br>
+                                        Tác giả: Nguyễn Ngọc Tư
+                                    </h2>
+                                    <br>
+                                    <p class="lead mb-0">
+                                        <h3>Tóm tắt:</h3>
+                                        Dũng là một cậu bé mồ côi cha mẹ, sống cùng người bác và bé gái tên Phượng. Bác của Dũng là một người đàn ông độc đoán, thường xuyên đánh đập Dũng và Phượng. Dũng không chịu đựng được sự hà khắc của người bác nên đã bỏ nhà ra đi.
+
+                                        Trên đường lang thang, Dũng gặp chú Năm, một người đàn ông cô độc, sống lang thang trên cánh đồng bất tận. Chú Năm là bạn thân của cha Dũng và đã nhận Dũng làm con nuôi. Dũng sống cùng chú Năm trên cánh đồng bất tận và học cách săn bắn, hái lượm để sinh sống.
+
+                                        Một ngày nọ, Dũng tình cờ gặp lại mẹ mình, bà Ba. Bà Ba lúc này đã già yếu và đang sống một cuộc sống túng quẫn. Dũng thương cảm cho mẹ nhưng không thể tha thứ cho bà vì đã bỏ rơi mình.
+
+                                        Cuối cùng, Dũng quyết định trở về nhà và tha thứ cho người bác của mình. Dũng cũng hứa sẽ chăm sóc Phượng và cùng cô bé xây dựng một cuộc sống mới.</p>
+                                </div>
+                                </div>
+                                <div class="row g-0">
+                                    <div class="col-lg-6 order-lg-2 text-white showcase-img" style="background-image: url('assets/img/bg-h5.webp')"></div>
+                                    <div class="col-lg-6 order-lg-1 my-auto showcase-text">
+                                        <h2>Tác phẩm: "Đất rừng phương Nam"<br><br>
+                                            Tác giả: Đoàn Giỏi
+                                        </h2>
+                                        <br>
+                                        <p class="lead mb-0">
+                                            <h3>Tóm tắt:</h3>
+                                            Dũng là một cậu bé mồ côi cha mẹ, sống cùng người bác và bé gái tên Phượng. Bác của Dũng là một người đàn ông độc đoán, thường xuyên đánh đập Dũng và Phượng. Dũng không chịu đựng được sự hà khắc của người bác nên đã bỏ nhà ra đi.
+
+                                            Trên đường lang thang, Dũng gặp chú Năm, một người đàn ông cô độc, sống lang thang trên cánh đồng bất tận. Chú Năm là bạn thân của cha Dũng và đã nhận Dũng làm con nuôi. Dũng sống cùng chú Năm trên cánh đồng bất tận và học cách săn bắn, hái lượm để sinh sống.
+
+                                            Một ngày nọ, Dũng tình cờ gặp lại mẹ mình, bà Ba. Bà Ba lúc này đã già yếu và đang sống một cuộc sống túng quẫn. Dũng thương cảm cho mẹ nhưng không thể tha thứ cho bà vì đã bỏ rơi mình.
+
+                                           Cuối cùng, Dũng quyết định trở về nhà và tha thứ cho người bác của mình. Dũng cũng hứa sẽ chăm sóc Phượng và cùng cô bé xây dựng một cuộc sống mới.</p>
+                                </div>
+                            </div>
+                        <div class="row g-0">
+                            <div class="col-lg-6 text-white showcase-img" style="background-image: url('assets/img/bg-h6.jpg')"></div>
+                            <div class="col-lg-6 my-auto showcase-text">
+                                <h2>Tác phẩm: "Chiếc thuyền ngoài xanh"<br><br>
+                                    Tác giả: Nguyễn Minh Châu
+                                </h2>
+                                <br>
+                                <p class="lead mb-0">
+                                    <h3>Tóm tắt:</h3>
+                                    Phùng, một nghệ sĩ nhiếp ảnh tài năng, được giao nhiệm vụ đi chụp ảnh cho một cuốn lịch. Trên đường đi, Phùng tình cờ nhìn thấy một cảnh tượng đẹp: một chiếc thuyền nhỏ đang lênh đênh trên biển, trên thuyền có một người đàn bà đang chèo thuyền và một người đàn ông đang đánh bắt cá.
+
+                                    Phùng bị thu hút bởi cảnh tượng này và quyết định chụp lại nó. Tuy nhiên, khi đến gần, Phùng chứng kiến một cảnh tượng hoàn toàn khác: người đàn ông đang đánh đập người đàn bà một cách dã man.
+
+                                    Cảnh tượng này khiến Phùng vô cùng phẫn nộ và chua xót. Anh không thể chụp ảnh nữa và bỏ đi.
+
+                                    Trên đường về, Phùng suy ngẫm về những gì mình đã chứng kiến. Anh nhận ra rằng cuộc sống không đơn giản như những gì anh tưởng tượng. Đằng sau vẻ đẹp bình dị của cuộc sống là những mảng tối mà con người không thể nhìn thấy.
+
+                                   Ý nghĩa:
+
+                                  "Chiếc thuyền ngoài xa" là một câu chuyện về sự đối lập giữa vẻ đẹp và cái ác, giữa cái thiện và cái ác.
+                                  Tác phẩm ca ngợi vẻ đẹp của thiên nhiên và khẳng định sức sống mãnh liệt của con người.
+                                  "Chiếc thuyền ngoài xa" là một lời cảnh tỉnh cho con người về những vấn đề nhức nhối trong xã hội.
+                                </p>
+                            </div>
+                            </div>
+                            <div class="row g-0">
+                                <div class="col-lg-6 order-lg-2 text-white showcase-img" style="background-image: url('assets/img/bg-h7.jpg')"></div>
+                                <div class="col-lg-6 order-lg-1 my-auto showcase-text">
+                                    <h2>Tác phẩm: "Hai đứa trẻ"<br><br>
+                                        Tác giả: Thạch Lam
+                                    </h2>
+                                    <br>
+                                    <p class="lead mb-0">
+                                        <h3>Tóm tắt:</h3>
+                                        Bối cảnh:
+
+                                  Phố huyện nghèo nàn, tẻ nhạt về đêm.<br>
+                                  Sự kiện:<br>
+
+                                  Đêm tàn:
+
+                                 Liên và An thắp đèn dầu, dọn dẹp cửa hàng tạp hóa.
+                                 Chị Tí rao bán khoai lang, lo lắng cho đứa con gái nhỏ mù.
+                                 Bác Siêu đun phở, hút thuốc phiện, than vãn về cuộc sống.
+                                 Bác Xẩm hát xẩm, tiếng hát ai oán, buồn bã.
+                                 Chuyến tàu đi qua:
+
+                                 Mang theo ánh sáng và âm thanh náo nhiệt trong chốc lát.
+                                 Gợi lên niềm hy vọng về một cuộc sống khác.
+                                 Sau khi tàu đi qua:
+
+                                Mọi người lại trở về với cuộc sống tẻ nhạt, u buồn.
+                                Liên mơ về một tương lai tươi sáng hơn.
+                                Tiếng rao của chị Tí vang vọng trong đêm.<br>
+                                Ý nghĩa:
+
+                                Bức tranh hiện thực sinh động về cuộc sống của những kiếp người nghèo khổ, tẻ nhạt ở phố huyện.
+                                Thể hiện lòng thương cảm, xót xa của tác giả trước số phận những con người bất hạnh.
+                                Khẳng định niềm tin vào tương lai tươi sáng hơn.
+                                 </p>
+                            </div>
+                        </div>
+                    </section>
+                    <!-- Nhận xét từ người dùng -->
+                    <section class="testimonials text-center bg-light">
+                        <div class="container">
+                            <h2 class="mb-5">Một số video về chủ đề đề "Văn nói"........</h2>
+                            <div class="video-container">
+                                <div class="video">
+                                <video width="300" height="533.33" controls>
+                                    <source src="assets/video/video1.mp4" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                                </div>
+                                <div class="video">
+                                <video width="300" height="533.33" controls>
+                                    <source src="assets/video/video2.mp4" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                                </div>
+                                <div class="video">
+                                <video width="300" height="533.33" controls>
+                                    <source src="assets/video/video3.mp4" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                                </div>
+                                 <div class="video">
+                                <video width="300" height="533.33" controls>
+                                    <source src="assets/video/video4.mp4" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                                </div>
+                            
+                            </div>
+                            
+
+                    </section>
+                    <!-- Lời kêu gọi hành động -->
+                    <section class="call-to-action text-white text-center" id="signup">
+                        <div class="container position-relative">
+                            <div class="row justify-content-center">
+                                <div class="col-xl-6">
+                                    <h2 class="solieu">Hãy đánh giá để cho chúng tôi biết về cảm nhận trải nghiệm trang web của bạn!</h2>
+                                    <!-- Form đăng ký -->
+                                    <!-- * * * * * * * * * * * * * * *-->
+                                    <!-- * * SB Forms Contact Form * *-->
+                                    <!--iểu mẫu này đã được tích hợp sẵn với SB Forms.-->
+                                    <!-- Để bi * * * * * * * * * * * * * * *-->
+                                    <!-- Bểu mẫu này hoạt động, hãy đăng ký tại-->
+                                    <!-- https://startbootstrap.com/solution/contact-forms-->
+                                    <!-- để nhận một mã API!-->
+                                    <form id="ratingForm" action="/submit-rating" method="post">
+                                        <div class="rating">
+                                            <input type="radio" id="star5" name="rating" value="5">
+                                            <label for="star5">5</label>
+                                            <input type="radio" id="star4" name="rating" value="4">
+                                            <label for="star4">4</label>
+                                            <input type="radio" id="star3" name="rating" value="3">
+                                            <label for="star3">3</label>
+                                            <input type="radio" id="star2" name="rating" value="2">
+                                            <label for="star2">2</label>
+                                            <input type="radio" id="star1" name="rating" value="1">
+                                            <label for="star1">1</label>
+                                        </div>  
+                                    </form>
+                    </section>
+                    <!-- Chân trang -->
+                    <footer class="footer bg-light">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-6 h-100 text-center text-lg-start my-auto">
+                                    <ul class="list-inline mb-2">
+                                        <li class="list-inline-item"><a href="https://nxbvanhoc.com.vn/" target="_blank">Mua sách</a></li>
+                                        <li class="list-inline-item">⋅</li>
+                                        <li class="list-inline-item"><a href="https://nhasachmienphi.com/" target="_blank">Đọc sách miễn phí</a></li>
+
+                                    </ul>
+                                    <p class="text-muted small mb-4 mb-lg-0">&copy; Website của Thuật Thuật 2023. Đã đăng ký Bản quyền.</p>
+                                </div>
+                                <div class="col-lg-6 h-100 text-center text-lg-end my-auto">
+                                    <ul class="list-inline mb-0">
+                                        <p class="nd"><marquee>Các bạn có thể tham khảo thêm một số nguồn sau đây để giúp cải thiện môn Ngữ Văn!</marquee></p>
+                                        <li class="list-inline-item me-4">
+                                            <a href="https://www.facebook.com/groups/268125304437461" target="_blank"><i class="bi-facebook fs-3"></i></a>
+                                        </li>
+                                        <li class="list-inline-item me-4">
+                                            <a href="https://thichvanhoc.com.vn/" target="_blank"><i class="bi-google fs-3"></i></a>
+                                        </li>
+                                        <li class="list-inline-item me-4">
+                                            <a href="https://www.youtube.com/@HocVanChiHien" target="_blank"><i class="bi-youtube fs-3"></i></a>
+                                        </li>
+                                    </ul>
+                                </div>   
+                    </footer>
+                    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+                    <script src="js/scripts.js"></script>
+                    <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+                    <script>
+                        document.querySelectorAll('.rating input').forEach(function(input) {
+                            input.addEventListener('click', function() {
+                                alert('Cảm ơn bạn đã đánh giá!');
+                            });
+                        });
+                    </script>
+                      <script>
+                        document.addEventListener("DOMContentLoaded", () => {
+                            const email = document.getElementById("emailAddress");
+                            const submit = document.getElementById("submitButton");
+                            submit.addEventListener("click", (e) => {
+                                e.preventDefault();
+                                const data = {
+                                    email: email.value,
+                                };
+                                postGoogle(data);
+                            });
+                            async function postGoogle(data) {
+                                const formURL = "https://docs.google.com/forms/d/e/1FAIpQLSdcYboTgDuxE6qcnP9AYw-0i6D_2kg5ZlJPqChtWYcmQHgZ5w/formResponse";
+                                const formData = new FormData();
+                                formData.append("entry.43522134", data.email);
+                                await fetch(formURL, {
+                                    method: "POST",
+                                    body: formData,
+                                }
+                                );
+                            }
+                        }
+                        );
+                    </script>
+                    </body>
+
+                   </html>
